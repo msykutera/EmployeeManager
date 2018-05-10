@@ -20,10 +20,10 @@
             <td>{{ employee.role }}</td>
             <td>{{ employee.skills }}</td>
             <td>
-                <a class="glyphicon glyphicon-pencil" routerLink="/edit/{{employee.employeeId}}"></a>
+                <a class="glyphicon glyphicon-pencil" style="cursor:pointer" routerLink="/edit/{{employee.employeeId}}"></a>
             </td>
             <td>
-                <a class="glyphicon glyphicon-remove" (click)="remove(employee.employeeId)"></a>
+                <a class="glyphicon glyphicon-remove" style="cursor:pointer" (click)="remove(employee.employeeId)"></a>
             </td>
         </tr>
     </tbody>

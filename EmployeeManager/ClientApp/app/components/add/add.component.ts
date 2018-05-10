@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
     selector: 'add',
     templateUrl: './add.component.html'
 })
-export class addComponent {
+export class AddComponent {
 
     public body: any = {};
 
