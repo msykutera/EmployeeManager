@@ -6,18 +6,32 @@ import { Http } from '@angular/http';
     templateUrl: './fetchdata.component.html'
 })
 export class FetchDataComponent {
-    public forecasts: WeatherForecast[];
+    public employees: Employee[];
+
+    private _http: Http;
+    private _baseUrl: string;
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-        http.get(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
-            this.forecasts = result.json() as WeatherForecast[];
+        this._http = http;
+        this._baseUrl = baseUrl;
+
+        this._http.get(this._baseUrl + 'api/employees').subscribe(result => {
+            this.employees = result.json() as Employee[];
+        }, error => console.error(error));
+    }
+
+    remove(employeeId: string) {
+        this._http.delete(this._baseUrl + 'api/employees/' + employeeId).subscribe(result => {
+            this._http.get(this._baseUrl + 'api/employees').subscribe(result => {
+                this.employees = result.json() as Employee[];
+            }, error => console.error(error));
         }, error => console.error(error));
     }
 }
 
-interface WeatherForecast {
-    dateFormatted: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
+interface Employee {
+    name: string;
+    gender: string;
+    role: string;
+    skills: string[];
 }

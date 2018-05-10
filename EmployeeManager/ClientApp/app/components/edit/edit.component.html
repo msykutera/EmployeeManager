@@ -1,0 +1,36 @@
+<h1>Edit employee</h1>
+
+<div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" class="form-control" [(ngModel)]="body.name" />
+</div>
+
+<div class="form-group">
+    <label for="name">Gender</label>
+    <select name="gender" class="form-control" [(ngModel)]="body.gender">
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="name">Role</label>
+    <input type="text" name="role" class="form-control" [(ngModel)]="body.role" />
+</div>
+
+<div class="form-group">
+    <label for="skills">Skills</label>
+    <p>
+        <b>Current:</b> {{oldSkills}}
+    </p>
+    <select class="form-control" [(ngModel)]="body.skills" multiple>
+        <option>Frontend development</option>
+        <option>Backend development</option>
+        <option>Unit testing</option>
+        <option>Integration testing</option>
+        <option>Job interviewing</option>
+        <option>Management</option>
+    </select>
+</div>
+
+<button (click)="edit()" class="btn btn-default">Edit employee</button>
